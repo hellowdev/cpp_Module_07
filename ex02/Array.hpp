@@ -11,7 +11,8 @@ template <typename T> class Array
         Array(unsigned int n);
         Array(const Array &original);
         Array& operator=(const Array &original);
-        unsigned int operator[](unsigned int check);
+        T& operator[](unsigned int check);
+        const T& operator[](unsigned int check) const;
         unsigned int size() const;
         ~Array();
 };

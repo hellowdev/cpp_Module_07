@@ -2,14 +2,13 @@
 
 template <typename T>
 Array<T>::Array()
-{
-    T array[0];
+{   
+    array = NULL;
 }
 
 template <typename T>
 Array<T>::Array(unsigned int n) : sizeMe(n)
 {
-    // std::cout << n << '\n';
     array = new T[n];
 }
 
@@ -39,26 +38,20 @@ Array<T>& Array<T>::operator=(const Array &original)
     return (*this);
 }
 
-int    idk(unsigned int check)
+template <typename T>
+T& Array<T>::operator[](unsigned int check)
 {
-    try
-    {
-        if (check >= sizeMe || check < 0)
-            throw std::out_of_range("out of bounds");
-        return 1;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    return 0;
+    if (check >= sizeMe || check < 0)
+        throw std::out_of_range("out of bounds");
+    return array[check];
 }
 
 template <typename T>
-unsigned int Array<T>::operator[](unsigned int check)
+const T& Array<T>::operator[](unsigned int check) const
 {
-    if (check)
-      
+    if (check >= sizeMe || check < 0)
+        throw std::out_of_range("out of bounds");
+    return array[check];
 }
 
 
